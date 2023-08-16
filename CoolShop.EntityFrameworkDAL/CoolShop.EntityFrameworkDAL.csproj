@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoolShop.CustomerInterface\CoolShop.CustomerInterface.csproj" />
+    <ProjectReference Include="..\CoolShop.DalInterface\CoolShop.DalInterface.csproj" />
+    <ProjectReference Include="..\CoolShop.Domain\CoolShop.CustomerDomain.csproj" />
+  </ItemGroup>
+
+</Project>
