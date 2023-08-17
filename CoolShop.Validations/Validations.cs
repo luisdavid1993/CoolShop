@@ -12,8 +12,6 @@ namespace CoolShop.CustomerValidation
         public virtual bool Validate(ICustomer anyType, out string errorMessage)
         {
             errorMessage = string.Empty;
-            if (string.IsNullOrWhiteSpace(anyType.CustomerType))
-                errorMessage += "CustomerType is required" + Environment.NewLine;
             if (string.IsNullOrWhiteSpace(anyType.CustomerName))
                 errorMessage += "CustomerName is required" + Environment.NewLine;
            

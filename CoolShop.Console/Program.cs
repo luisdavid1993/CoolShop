@@ -1,4 +1,5 @@
 ﻿using CoolShop.AdoDAL;
+using CoolShop.CustomerFactory;
 using CoolShop.CustomerInterface;
 using CoolShop.DalInterface;
 using CoolShop.Domain;
@@ -14,19 +15,19 @@ internal class Program
         Console.WriteLine("Hello, World!");
 
 
-        //TestNomalImplemantationWithAdoDAL();
+        TestNomalImplemantationWithAdoDAL();
         //TesUnitOfWork(); ////unit of work handle Transaction
         //TesTransactionScope(); ////  TransactionScope handle Transaction
         // CallMethodsForInsertManyRecords();
 
-        CustomerBase customer = CallReverseMethod();
+     //   CustomerBase customer = CallReverseMethod();
 
 
     }
 
     private static CustomerBase CallReverseMethod()
     {
-        CustomerBase client = Factory.Create("Customer");
+        CustomerBase client = FactoryLookUp.Create("Customer");
         client.Id = 2;
         client.CustomerName = "Maxi";
         client.PhoneNumber = "3213699622";
@@ -85,7 +86,7 @@ internal class Program
     /// <returns></returns>
     private static IEnumerable<CustomerBase> AddCustomerInMemoryAndSave(IRepository<CustomerBase> dal)
     {
-        CustomerBase client = Factory.Create("Customer");
+        CustomerBase client = FactoryLookUp.Create("Customer");
         client.Id = 2;
         client.CustomerName = "Conie";
         client.PhoneNumber = "3213699622";
@@ -97,7 +98,7 @@ internal class Program
         dal.Add(client);
 
 
-        CustomerBase client2 = Factory.Create("Lead");
+        CustomerBase client2 = FactoryLookUp.Create("Lead");
         client2.CustomerName = "Luis David";
         client2.PhoneNumber = "3213699622";
         client2.BillAmount = 500;
@@ -112,10 +113,10 @@ internal class Program
     private static void TestNomalImplemantationWithAdoDAL()
     {
 
-        CustomerBase client = Factory.Create("Customer");
+        CustomerBase client = FactoryLookUp.Create("Lead");
 
         client.Id = 2;
-        client.CustomerName = "Conie";
+        client.CustomerName = "Mariangeles";
         client.PhoneNumber = "3213699622";
         client.BillAmount = 500;
         client.BillDate = DateTime.Now;
@@ -135,7 +136,7 @@ internal class Program
         foreach (var item in clients)
         {
 
-            Console.WriteLine($"client : {item.CustomerName} {item.PhoneNumber} {item.Address}");
+            Console.WriteLine($"client : {item}");
         }
 
 
@@ -150,7 +151,7 @@ internal class Program
 
 
 
-            CustomerBase client = Factory.Create("Customer");
+            CustomerBase client = FactoryLookUp.Create("Customer");
             client.CustomerName = "client 08";
             client.PhoneNumber = "3143157981";
             client.BillAmount = 500;
@@ -163,7 +164,7 @@ internal class Program
             dal.Add(client);
             dal.Save();
 
-            CustomerBase client2 = Factory.Create("Customer");
+            CustomerBase client2 = FactoryLookUp.Create("Customer");
             client2.CustomerName = null;
             client2.PhoneNumber = "HOLA COMO ";
             client2.BillAmount = 500;
@@ -204,7 +205,7 @@ internal class Program
 
             using (TransactionScope scope = new TransactionScope())
             {
-                CustomerBase client = Factory.Create("Customer");
+                CustomerBase client = FactoryLookUp.Create("Customer");
                 client.CustomerName = "Luis David";
                 client.PhoneNumber = "3213699622";
                 client.BillAmount = 500;
@@ -219,7 +220,7 @@ internal class Program
 
 
 
-                CustomerBase client2 = Factory.Create("Lead");
+                CustomerBase client2 = FactoryLookUp.Create("Lead");
                 client2.CustomerName = "Mariangeles";
                 client2.PhoneNumber = "3143157981";
                 client2.BillAmount = 500;

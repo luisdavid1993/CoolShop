@@ -2,18 +2,19 @@
 {
     public interface ICustomer
     {
-        public int Id { get; set; }
-        public string CustomerType { get; set; }
-        public string CustomerName { get; set; }
-        public string PhoneNumber { get; set; }
-        public decimal BillAmount { get; set; }
-        public DateTime BillDate { get; set; }
-        public string Address { get; set; }
-
-        public bool Validete(out string errorMessage);
+        int Id { get; set; }
+        string CustomerType { get; set; }
+        string CustomerName { get; set; }
+        string PhoneNumber { get; set; }
+        decimal BillAmount { get; set; }
+        DateTime BillDate { get; set; }
+        string Address { get; set; }
+        bool Validete(out string errorMessage);
         //This method should not be here, because real world customer do not have actios like Clone
-        public void Clone();
+        void Clone();
         //This method should not be here, because real world customer do not have actios like Revert
-        public  void Revert(); // revert to old copy
+        void Revert(); // revert to old copy
+
+        decimal ActualCost(); //ActualCost = BillAmount - discount + extra charge 
     }
 }

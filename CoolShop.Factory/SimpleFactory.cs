@@ -1,4 +1,5 @@
-﻿using CoolShop.CustomerInterface;
+﻿using CoolShop.CustomerHelpper;
+using CoolShop.CustomerInterface;
 using CoolShop.CustomerValidation;
 using CoolShop.Domain;
 using Unity;
@@ -9,10 +10,10 @@ namespace CoolShop.FactoryCustomer
     /// <summary>
     /// Factory con libreria UnityContainer y palabra reservada Lazy
     /// </summary>
-    public static class Factory //Desing Pattern =- Simple factory (create objects)
+    public static class SimpleFactory //Simple factory (create objects)
     {
 
-        private static Lazy<UnityContainer> container  = new Lazy<UnityContainer>();  //Desing Pattern =- Lazy Loading (Just load at one time)
+        private static Lazy<UnityContainer> container  = new Lazy<UnityContainer>();  //Lazy Loading (Just load at one time)
 
         public static CustomerBase Create(string customerType)
         {
@@ -25,10 +26,10 @@ namespace CoolShop.FactoryCustomer
                                                         new CustomerValidationBasic()));
 
 
-            container.Value.RegisterType<CustomerBase, Customer>("Customer",new InjectionConstructor(customerValidation, "Customer"));
-            container.Value.RegisterType<CustomerBase, Customer>("Lead", new InjectionConstructor(leadValidation,"Lead"));
-            container.Value.RegisterType<CustomerBase, Customer>("SelfService", new InjectionConstructor(basicValidation, "SelfService"));
-            container.Value.RegisterType<CustomerBase, Customer>("Delivery", new InjectionConstructor(deliveryValidation, "Delivery"));
+            container.Value.RegisterType<CustomerBase, Customer>("Customer",new InjectionConstructor(customerValidation, new DiscountSatSun(), new ExtraChargeSatSun(), "Customer"));
+            container.Value.RegisterType<CustomerBase, Customer>("Lead", new InjectionConstructor(leadValidation, new DiscountNotAvalible(), new ExtraChargeNotAvalible(), "Lead"));
+            container.Value.RegisterType<CustomerBase, Customer>("SelfService", new InjectionConstructor(basicValidation, new DiscountBillAmount(), null, "SelfService"));
+            container.Value.RegisterType<CustomerBase, Customer>("Delivery", new InjectionConstructor(deliveryValidation, new DiscountBillAmount(), new ExtraChargeSatSun(), "Delivery"));
             return container.Value.Resolve<CustomerBase>(customerType);  //Desing Pattern =- RIP; (replace if with polymorphism)
         }
     }

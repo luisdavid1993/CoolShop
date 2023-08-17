@@ -1,4 +1,5 @@
-﻿using CoolShop.CustomerInterface;
+﻿using CoolShop.CustomerHelpper;
+using CoolShop.CustomerInterface;
 using CoolShop.CustomerValidation;
 using CoolShop.Domain;
 using System;
@@ -28,8 +29,8 @@ namespace CoolShop.FactoryCustomer
             //Lazy Loading
             if (cust.Count == 0)
             {
-                cust.Add("Customer", new Customer(custommerValidation, "Customer"));
-                cust.Add("Lead", new Customer(leadValidation, "Lead"));
+                cust.Add("Customer", new Customer(custommerValidation, new DiscountSatSun(), new ExtraChargeSatSun(), "Customer"));
+                cust.Add("Lead", new Customer(leadValidation,new DiscountNotAvalible(), new ExtraChargeNotAvalible(), "Lead"));
             }
 
             return cust[customerType]; //RIP; replace if with polymorphism

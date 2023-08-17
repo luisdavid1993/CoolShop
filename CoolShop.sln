@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.Console", "CoolSho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.CustomerInterface", "CoolShop.CustomerInterface\CoolShop.CustomerInterface.csproj", "{AFF3D66E-0C2F-439D-902C-B9C387BD0663}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.CustomerValidation", "CoolShop.Validations\CoolShop.CustomerValidation.csproj", "{1D58647F-0808-4889-B90C-C22EB2DA03D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.CustomerHelpper", "CoolShop.Validations\CoolShop.CustomerHelpper.csproj", "{1D58647F-0808-4889-B90C-C22EB2DA03D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{84CA7829-CE4B-4596-AEFC-22172165FE0C}"
 	ProjectSection(SolutionItems) = preProject
@@ -32,9 +32,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_DataAccess", "02_DataAcc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.AdoDAL", "CoolShop.AdoDAL\CoolShop.AdoDAL.csproj", "{4606E73F-331A-49E9-9188-B3BDB304A96C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.FactoryDAL", "CoolShop.FactoryDAL\CoolShop.FactoryDAL.csproj", "{5BA9568E-E566-4F00-AEB9-93A5584B0B10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.FactoryDAL", "CoolShop.FactoryDAL\CoolShop.FactoryDAL.csproj", "{5BA9568E-E566-4F00-AEB9-93A5584B0B10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.EntityFrameworkDAL", "CoolShop.EntityFrameworkDAL\CoolShop.EntityFrameworkDAL.csproj", "{D31F0354-1AAB-4E18-B8F2-FD087A03E14B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.EntityFrameworkDAL", "CoolShop.EntityFrameworkDAL\CoolShop.EntityFrameworkDAL.csproj", "{D31F0354-1AAB-4E18-B8F2-FD087A03E14B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06_Resource", "06_Resource", "{87719D3D-16FC-46F8-B7E3-D8C2E2887276}"
+	ProjectSection(SolutionItems) = preProject
+		Customer Logic.png = Customer Logic.png
+		FactoryCreation.png = FactoryCreation.png
+		Mediator.png = Mediator.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

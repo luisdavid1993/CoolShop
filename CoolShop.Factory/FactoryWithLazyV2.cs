@@ -1,4 +1,5 @@
-﻿using CoolShop.CustomerInterface;
+﻿using CoolShop.CustomerHelpper;
+using CoolShop.CustomerInterface;
 using CoolShop.CustomerValidation;
 using CoolShop.Domain;
 using System;
@@ -28,8 +29,8 @@ namespace CoolShop.FactoryCustomer
                                                         new CustomerValidationBasic()));
 
 
-            cust.Value.Add("Customer", new Customer(custommerValidation, "Customer")); 
-            cust.Value.Add("Lead", new Customer(leadValidation, "Lead"));
+            cust.Value.Add("Customer", new Customer(custommerValidation, new DiscountSatSun(), new ExtraChargeSatSun(), "Customer")); 
+            cust.Value.Add("Lead", new Customer(leadValidation, new DiscountNotAvalible(), new ExtraChargeNotAvalible(), "Lead"));
             return cust.Value[customerType]; //RIP; replace if with polymorphism
         }
     }

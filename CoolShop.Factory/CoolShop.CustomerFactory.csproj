@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoolShop.Domain\CoolShop.CustomerDomain.csproj" />
-    <ProjectReference Include="..\CoolShop.Validations\CoolShop.CustomerValidation.csproj" />
+    <ProjectReference Include="..\CoolShop.Validations\CoolShop.CustomerHelpper.csproj" />
   </ItemGroup>
 
 </Project>

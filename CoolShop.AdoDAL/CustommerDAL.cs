@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CoolShop.FactoryCustomer;
 using System.Configuration;
+using CoolShop.CustomerFactory;
 
 namespace CoolShop.AdoDAL
 {
@@ -44,7 +45,7 @@ namespace CoolShop.AdoDAL
                 while (dr.Read())
                 {
                     string cusType = dr["CustomerType"].ToString();
-                    CustomerBase customer = Factory.Create(cusType);
+                    CustomerBase customer = FactoryLookUp.Create(cusType);
                     customer.Id = Convert.ToInt32(dr["Id"]);
                     customer.CustomerType = cusType;
                     customer.CustomerName = dr["CustomerName"].ToString();
@@ -95,7 +96,7 @@ namespace CoolShop.AdoDAL
                             while (reader.HasRows)
                             {
                                 string cusType = reader["CustomerType"].ToString();
-                                CustomerBase customer = Factory.Create(cusType);
+                                CustomerBase customer = FactoryLookUp.Create(cusType);
                                 customer.Id = Convert.ToInt32(reader["Id"]);
                                 customer.CustomerType = cusType;
                                 customer.CustomerName = reader["CustomerName"].ToString();

@@ -11,6 +11,8 @@ namespace CoolShop.CustomerInterface
     {
 
         private IValidation<ICustomer> validatios;
+        private IDiscount discount;
+        private IExtraCharge extraCharge;
 
         private ICustomer oldCopy; //Desing Pattern =- Memento Pattern (revert back)
         [Key]
@@ -26,9 +28,11 @@ namespace CoolShop.CustomerInterface
         { 
         
         }
-        public CustomerBase(IValidation<ICustomer> valida)
+        public CustomerBase(IValidation<ICustomer> valida, IDiscount discount, IExtraCharge extraCharge)
         {
             this.validatios = valida;
+            this.discount = discount;
+            this.extraCharge = extraCharge;
         }
 
         public bool Validete(out string errorMessage)
@@ -51,6 +55,28 @@ namespace CoolShop.CustomerInterface
             this.BillAmount = oldCopy.BillAmount;
             this.BillDate = oldCopy.BillDate;
             this.Address = oldCopy.Address;
+        }
+
+        public decimal ActualCost()
+        {
+           return BillAmount - discount.Calculate(this) + extraCharge.Calculate(this);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null)
+                return false;
+            if (obj.GetHashCode() == this.GetHashCode())
+                return true;
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return $"{Id}{CustomerName}{CustomerType}{PhoneNumber}{Address}{BillAmount}{BillDate}".GetHashCode();
+        }
+        public override string ToString()
+        {
+            return $" {CustomerType} {CustomerName} -- {CustomerType} -- {PhoneNumber} -- {Address} -- BillAmount {BillAmount} -- Final Amount {ActualCost()}";
         }
     }
 }
