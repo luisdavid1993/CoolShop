@@ -41,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06_Resource", "06_Resource"
 		Customer Logic.png = Customer Logic.png
 		FactoryCreation.png = FactoryCreation.png
 		Mediator.png = Mediator.png
+		..\Notas.docx = ..\Notas.docx
 	EndProjectSection
 EndProject
 Global
