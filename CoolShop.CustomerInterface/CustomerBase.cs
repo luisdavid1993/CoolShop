@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,6 +63,19 @@ namespace CoolShop.CustomerInterface
            return BillAmount - discount.Calculate(this) + extraCharge.Calculate(this);
         }
 
+        //overriding == and != operators
+        public static bool operator !=(CustomerBase obj, CustomerBase obj1)
+        {
+            if (obj.GetHashCode() != obj1.GetHashCode())
+                return true;
+            return false;
+        }
+        public static bool operator ==(CustomerBase obj, CustomerBase obj1)
+        {
+            if (obj.GetHashCode() == obj1.GetHashCode())
+                return true;
+            return false;
+        }
         public override bool Equals(object? obj)
         {
             if (obj == null)
